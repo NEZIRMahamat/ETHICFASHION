@@ -23,13 +23,6 @@ cursor.execute("""
                sex VARCHAR(50), 
                age INTEGER)
 """)
-
-               
-#cursor.execute("""
-#    INSERT INTO posts(name, price, quantity, description) 
-#    VALUES ('Ordinateur', 450, 2, 'Ordinateur Dell de de CPU de douxième génération non tactile'),
-#        ('Iphone 13', 759, 1, 'Iphone 13 Apple 2022')
-#""")
                
 
 cursor.execute("""
