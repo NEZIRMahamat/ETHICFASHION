@@ -1,12 +1,14 @@
 import psycopg2
 import streamlit as st
+from decouple import config
+
 
 st.title("Sondage Ethic Fashion\n")
 st.write("Veuillez saisir les informations demandées :")
 
 # connexion
 def create_connexion():
-    URL = "postgres://nezir:S7WUsSJ2to8uIfHtpdAqriGDCeD1Hrxu@dpg-chd4qpm7avjcvo5maee0-a.frankfurt-postgres.render.com/data_fast_fashion"
+    URL = config('URL_DATABASE_CONNEXION')
     connexion = psycopg2.connect(URL)
     return connexion
 
