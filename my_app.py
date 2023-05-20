@@ -6,12 +6,13 @@ from decouple import config
 st.title("Sondage Ethic Fashion\n")
 st.write("Veuillez saisir les informations demandées :")
 
-# connexion
+# connexion à la base de données
 def create_connexion():
     URL = config('URL_DATABASE_CONNEXION')
     connexion = psycopg2.connect(URL)
     return connexion
 
+# insertion de données dans la base de données
 def insert_data(data):
     connexion = create_connexion()
     cursor = connexion.cursor() 
@@ -25,7 +26,7 @@ def insert_data(data):
     connexion.close()
 
 def main():
-    # fast fashion
+    # question d'ordre fast fashion
     decision_options = ['Les prix bas', 'La variété des styles', 'La facilité d\'accès et la disponibilité dans les magasins', 'Les campagnes publicitaires', 'L\'influence des célébrités et des influenceurs']
     frequency_options = ['Plusieurs fois par mois', 'Une fois par mois', 'Moins souvent (quelques fois par an ou moins)']
     site_options = ["En ligne, sur internet", "En magasin : Dans les enseignes de mode fast fashion", "Marché temporaire ou magasins éphémères"]
@@ -40,7 +41,7 @@ def main():
     if fast_site is None :
         st.warning("Veuillez sélectionner une option valide.")
 
-    # Ethic fashion
+    # question d'ordre Ethic fashion
     importance_options = ['Oui, toujours', 'Parfois, cela dépend de la situation', 'Non, cela ne fait pas partie de mes critères d\'achat']
     select_options = ['Conditions de travail équitables dans les usines de production', 'Utilisation de matériaux durables et respectueux de l\'environnement','Absence de travail des enfants dans la chaîne d\'approvisionnement', 'Transparence des pratiques commerciales et de la chaîne d\'approvisionnement', 'Soutien aux artisans locaux et aux communautés défavorisées']
     price_options = ['Oui, je suis prêt(e) à payer plus pour des vêtements éthiques', 'Non, je préfère les produits moins chers de la fast fashion', 'Cela dépend des circonstances et de la qualité du produit']
@@ -92,7 +93,6 @@ def main():
     st.write("Instructions :")
     st.write("- Assurez-vous de remplir tous les champs.")
     st.write("- Cliquez sur le bouton 'Envoyer' pour soumettre le formulaire.")
-    # button d'envoie
 
     # button d'envoie
     if st.button("Envoyer"):
